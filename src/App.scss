@@ -13,6 +13,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  .react-table {
+    overflow: auto;
+    tr td {
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+  .avatar{
+    width: 90px;
+    img{
+      border-radius: 50%;
+      overflow: hidden;
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 
 code {

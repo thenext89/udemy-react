@@ -5,6 +5,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
+  let obj = {
+    name: 'tiep',
+    age: '23',
+    job: 'develop'
+  };
+  let {name, job, ...rest} = obj;
+  console.log('name', name, 'job', job, 'rest', rest);
+  console.log('============================ **** ==========================')
+  function logger({name,job}){
+    console.log(name, job);
+  }
+  // logger(obj)
+
   return (
     <Navbar bg="light" expand="lg">
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
