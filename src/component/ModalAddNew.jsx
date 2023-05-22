@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { postCreateNewUser } from '../service/UserSevice';
+import { toast } from 'react-toastify';
 
 const ModalAddNew = (props) => {
 
@@ -10,9 +12,15 @@ const ModalAddNew = (props) => {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [avatar, setAvatar] = useState('');
-    const saveUser = () => {
-        console.log(firstName, lastName, email, avatar)
-        handleClose();
+    const saveUser = async () => {
+        let res = await postCreateNewUser(firstName, email);
+        if(res && res.id) {
+            handleClose();
+            toast.success('Create successfully')
+        }
+        else {
+            toast.error('Create fail')
+        }
     }
     return (
         <>

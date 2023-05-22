@@ -4,6 +4,9 @@ import axios from "./customize-axios";
 const fetchAllUser = (page)=>{
     return axios.get(`/api/users?page=${page}`);
 };
+const postCreateNewUser = (name, job) => {
+    return axios.post(`/api/users`, {name: name, job: job});
+}
 // can thiep vao viec gui du lieu va truoc khi nhan du lieu request tra ve
 // Add a response interceptor
 instance.interceptors.response.use(function (response) {
@@ -15,4 +18,4 @@ instance.interceptors.response.use(function (response) {
     // Do something with response error
     return Promise.reject(error);
   });
-export { fetchAllUser }
+export { fetchAllUser, postCreateNewUser }

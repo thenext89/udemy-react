@@ -4,7 +4,15 @@ import { Container } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import Table from 'react-bootstrap/Table';
 import { fetchAllUser } from '../service/UserSevice';
+import ModalAddNew from './ModalAddNew';
 function TableUsers(props) {
+    const [showAddUser, setShowAddUser] = useState(false);
+    const handleShowModalAdd = () => {
+      setShowAddUser(true);
+    }
+    const handleClose = () => {
+      setShowAddUser(false);
+    }
     const [listUsers, setListUsers] = useState([]);
     const [totalUsers, setTotalUsers] = useState(0);
     const [totalPage, setTotalPage] = useState(0);
@@ -26,6 +34,11 @@ function TableUsers(props) {
     }
     return (
         <Container className='px-5'>
+            <div className='table-heading d-flex justify-content-end my-3'>
+                <button className='btn btn-success' onClick={handleShowModalAdd}>
+                Add new user
+                </button>
+            </div>
             <h2 className='lead bold'>Table users</h2>
             <Table striped bordered hover variant="dark" className='react-table'>
                 <thead>
@@ -74,6 +87,10 @@ function TableUsers(props) {
                 activeClassName="active"
                 // renderOnZeroPageCount={null}
             />
+            <ModalAddNew
+                show={showAddUser}
+                handleClose={handleClose}
+            ></ModalAddNew>
         </Container>
     );
 }
