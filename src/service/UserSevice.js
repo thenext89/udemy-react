@@ -1,8 +1,8 @@
 import instance from "./customize-axios";
 import axios from "./customize-axios";
 
-const fetchAllUser = ()=>{
-    return axios.get("/api/users?page=1");
+const fetchAllUser = (page)=>{
+    return axios.get(`/api/users?page=${page}`);
 };
 // can thiep vao viec gui du lieu va truoc khi nhan du lieu request tra ve
 // Add a response interceptor
